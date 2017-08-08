@@ -30,15 +30,19 @@ temperatura_maxima=30#un input mas cheto, + y - con un select(elegir que input v
  
 while True:
     
+#Riego
 	hora_de_riego = hora_de_encendido -1
 	if(hora_de_riego==-1):
 		hora_de_riego=23
-	if(hora_de_riego = hora_actual)
-		if(GPIO.input(3)==0):
-			print ("Regando")
-		if(GPIO.input(3)==1):
-			print ("No falta riego")
-		
+	if(GPIO.input(3) == 1):			#copiar un if de estos por cada maceta con su input de sensor de humedad.
+		if(hora_de_riego == hora_actual):		
+			print("Regando")		#este print puede ir a lcd y el evento debera disparar una notificacion en la app 
+			GPIO.output(13,GPIO.HIGH)
+	if(GPIO.input(3) == 0):
+		if(hora_de_riego == hora_actual):
+			print("No necesario regar")			
+			GPIO.output(13,GPIO.LOW)
+#Realtime
 	year, month, day, hour, minute = time.strftime("%Y,%m,%d,%H,%M").split(',')
 	hora_actual = int(hour)
 	inputVer=GPIO.input(21)	
