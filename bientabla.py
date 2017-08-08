@@ -1,4 +1,4 @@
-#agrego este comentario palsito
+
 #tutorial de como conectar:
 #http://razzpisampler.oreilly.com/ch07.html
 #ojo los swich no van con 3v, sino gnd y el pin
