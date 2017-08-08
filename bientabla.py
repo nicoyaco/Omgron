@@ -33,8 +33,11 @@ while True:
 	hora_de_riego = hora_de_encendido -1
 	if(hora_de_riego==-1):
 		hora_de_riego=23
-	if(GPIO.input(3)==0):
-		print ("Regando")
+	if(hora_de_riego = hora_actual)
+		if(GPIO.input(3)==0):
+			print ("Regando")
+		if(GPIO.input(3)==1):
+			print ("No falta riego")
 		
 	year, month, day, hour, minute = time.strftime("%Y,%m,%d,%H,%M").split(',')
 	hora_actual = int(hour)
@@ -86,11 +89,9 @@ while True:
        
 	if(hora_actual in lista):
 		GPIO.output(11,GPIO.HIGH)
-	#hora_de_riego = hora_encendido-1
-	   #GPIO.output(18,GPIO.HIGH) seria el rele de la bomba de agua pasa a on
-	   #print ("Regando")
-	   #time.sleep(300)queda ON por 10 minutos "regando"
-	   #GPIO.output(18;GPIO.LOW) seria el rele de la bomba de agua pasa a off
+
+
+
    
 	
 	else:
