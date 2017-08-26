@@ -30,19 +30,11 @@ temperatura_maxima=30#un input mas cheto, + y - con un select(elegir que input v
  
 while True:
     
-#Riego
+	#Riego
 	hora_de_riego = hora_de_encendido -1
 	if(hora_de_riego==-1):
 		hora_de_riego=23
-	if(GPIO.input(3) == 1):			#copiar un if de estos por cada maceta con su input de sensor de humedad.
-		if(hora_de_riego == hora_actual):		
-			print("Regando")		#este print puede ir a lcd y el evento debera disparar una notificacion en la app 
-			GPIO.output(13,GPIO.HIGH)
-	if(GPIO.input(3) == 0):
-		if(hora_de_riego == hora_actual):
-			print("No necesario regar")			
-			GPIO.output(13,GPIO.LOW)
-#Realtime
+	#Realtime
 	year, month, day, hour, minute = time.strftime("%Y,%m,%d,%H,%M").split(',')
 	hora_actual = int(hour)
 	inputVer=GPIO.input(21)	
@@ -53,6 +45,7 @@ while True:
 		print("OFF 		"+str(hora_de_apagado)+"	Hs")
 		print("Riego a las:	"+str(hora_de_riego)+"	Hs")	
 		print(str(lista))
+
 	inputSumarHorasEncendido = GPIO.input(18)
 	if(inputSumarHorasEncendido == 0):
 		lista=[]
@@ -60,20 +53,20 @@ while True:
 		print ("ON "+str(hora_de_encendido))
     
  
-	if(hora_de_encendido== 24):
-		hora_de_encendido = 0
-       
 	inputSumarHorasApagado = GPIO.input(16)
 	if(inputSumarHorasApagado == 0):
 		lista=[]
 		hora_de_apagado+=1
 		print ("OFF "+str(hora_de_apagado))
 	
- 
+
+ 	if(hora_de_encendido== 24):
+		hora_de_encendido = 0
     
 	if(hora_de_apagado == 24):
 		hora_de_apagado = 0
-		lista=[] 
+	
+	lista=[] 
 	#calculo de la lista, tiene cuales son las horas de funcionamento
 	#[13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 1, 2]
 	if(hora_de_apagado > hora_de_encendido):
@@ -90,14 +83,10 @@ while True:
 				lista.append(hora_de_encendido+i)
                
      
-       
+
 	if(hora_actual in lista):
 		GPIO.output(11,GPIO.HIGH)
 
-
-
-   
-	
 	else:
 		GPIO.output(11,GPIO.LOW)
 
