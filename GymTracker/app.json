@@ -20,6 +20,6 @@
         "backgroundColor": "#0d0d14"
       }
     },
-    "platforms": ["ios", "android"]
+    "platforms": ["ios", "android", "web"]
   }
 }
